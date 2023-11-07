@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bgi726w431pei"]
+
+[node name="Kakuzai" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.435, 0, -1.6)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.003, 0)
+use_collision = true
+collision_layer = 4
+size = Vector3(0.405, 0.0055, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.165, 0.043, 0)
+use_collision = true
+collision_layer = 4
+size = Vector3(0.075, 0.075, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173, 0.033, 0)
+use_collision = true
+collision_layer = 4
+size = Vector3(0.06, 0.06, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009, 0.051, 0)
+use_collision = true
+collision_layer = 4
+size = Vector3(0.09, 0.09, 3)

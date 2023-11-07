@@ -1,0 +1,309 @@
+[gd_scene load_steps=17 format=3 uid="uid://jemo63dj0nso"]
+
+[ext_resource type="Material" uid="uid://pwcurr8xjd8e" path="res://addons/kenney_prototype_tools/materials/green/material_04.tres" id="1_mh6o0"]
+[ext_resource type="Script" path="res://camera.gd" id="2_7oref"]
+[ext_resource type="PackedScene" uid="uid://cmv8m01ytwir1" path="res://fence.tscn" id="2_kdrtu"]
+[ext_resource type="PackedScene" uid="uid://ripw32cp0y8u" path="res://ld06.tscn" id="2_mio1f"]
+[ext_resource type="PackedScene" uid="uid://fq5qvaclhbni" path="res://kakuzai_zenkoku.tscn" id="2_v2amx"]
+[ext_resource type="PackedScene" uid="uid://clnmevole1hnq" path="res://line.tscn" id="3_a0ofl"]
+[ext_resource type="PackedScene" uid="uid://dtr0u82b88q2m" path="res://yellow_line.tscn" id="4_pgop1"]
+[ext_resource type="Script" path="res://robot.gd" id="4_qefnv"]
+[ext_resource type="PackedScene" uid="uid://b06msfufroh3p" path="res://rope_fence.tscn" id="6_y123h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew55q"]
+
+[sub_resource type="Sky" id="Sky_h1bvk"]
+sky_material = SubResource("ProceduralSkyMaterial_ew55q")
+
+[sub_resource type="Environment" id="Environment_1lxsk"]
+background_mode = 2
+background_energy_multiplier = 1.32
+sky = SubResource("Sky_h1bvk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpwsf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7xavb"]
+size = Vector3(0.65, 0.65, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_all4t"]
+transparency = 1
+albedo_color = Color(0, 0, 1, 0.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_hmovn"]
+material = SubResource("StandardMaterial3D_all4t")
+size = Vector3(0.5, 0.5, 0.1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ROSCoord" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ROSCoord"]
+transform = Transform3D(0.24511, -0.896646, -0.36871, 0.875367, 0.368152, -0.313365, 0.416719, -0.245948, 0.875131, 16.891, -20.0735, 20.7424)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ROSCoord"]
+environment = SubResource("Environment_1lxsk")
+
+[node name="Field" type="Node3D" parent="ROSCoord"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Floor" type="CSGBox3D" parent="ROSCoord/Field"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, -4.5)
+material_override = ExtResource("1_mh6o0")
+use_collision = true
+collision_layer = 2
+size = Vector3(11.3, 1, 9.3)
+
+[node name="Kakuzai" parent="ROSCoord/Field" instance=ExtResource("2_v2amx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52, 0, -3)
+
+[node name="Kakuzai2" parent="ROSCoord/Field" instance=ExtResource("2_v2amx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.48, 0, -6)
+
+[node name="Fences" type="Node3D" parent="ROSCoord/Field"]
+
+[node name="Fence" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.5, 0.075, -9.075)
+
+[node name="Fence10" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -8.5)
+
+[node name="Fence11" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -7.5)
+
+[node name="Fence12" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -6.5)
+
+[node name="Fence13" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -5.5)
+
+[node name="Fence14" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -4.5)
+
+[node name="Fence15" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -3.5)
+
+[node name="Fence16" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -2.5)
+
+[node name="Fence17" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.075, 0.075, -1.5)
+
+[node name="Fence18" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -1.075, 0.075, -0.5)
+
+[node name="Fence2" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.5, 0.075, -9.075)
+
+[node name="Fence3" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.5, 0.075, -9.075)
+
+[node name="Fence4" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.5, 0.075, -9.075)
+
+[node name="Fence5" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.5, 0.075, -9.075)
+
+[node name="Fence6" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 0.075, -9.075)
+
+[node name="Fence7" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.5, 0.075, -9.075)
+
+[node name="Fence8" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.5, 0.075, -9.075)
+
+[node name="Fence9" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.5, 0.075, -9.075)
+
+[node name="Fence28" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.5, 0.075, -9.075)
+
+[node name="Fence40" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 9.5, 0.075, -7.925)
+
+[node name="Fence19" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 8.5, 0.075, 0.0750003)
+
+[node name="Fence20" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 7.5, 0.075, 0.0750003)
+
+[node name="Fence21" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 6.5, 0.075, 0.0750003)
+
+[node name="Fence22" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 5.5, 0.075, 0.0750008)
+
+[node name="Fence23" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 4.5, 0.075, 0.0750008)
+
+[node name="Fence24" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 3.5, 0.075, 0.0750003)
+
+[node name="Fence25" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 2.5, 0.075, 0.0750008)
+
+[node name="Fence26" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 1.5, 0.075, 0.0750012)
+
+[node name="Fence29" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -7.5)
+
+[node name="Fence39" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 10.075, 0.075, -8.5)
+
+[node name="Fence30" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -6.5)
+
+[node name="Fence31" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -5.5)
+
+[node name="Fence32" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -4.5)
+
+[node name="Fence33" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -3.5)
+
+[node name="Fence34" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -2.5)
+
+[node name="Fence35" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -1.5)
+
+[node name="Fence36" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, -1.31134e-07, -5.73206e-15, 9.075, 0.075, -0.5)
+
+[node name="Fence27" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.5, 0.075, 0.0750008)
+
+[node name="Fence37" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.5, 0.075, 0.0750008)
+
+[node name="Fence38" parent="ROSCoord/Field/Fences" instance=ExtResource("2_kdrtu")]
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, -0.5, 0.075, -1.075)
+
+[node name="Lines" type="Node3D" parent="ROSCoord/Field"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="Line" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.238, 0, -1.5)
+
+[node name="Line5" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.238, 0, -7.5)
+material = SubResource("StandardMaterial3D_gpwsf")
+
+[node name="Line4" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.762, 0, -1.5)
+
+[node name="Line7" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.762, 0, -7.5)
+material = SubResource("StandardMaterial3D_gpwsf")
+
+[node name="Line2" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -2.238)
+
+[node name="Line6" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -6.762)
+material = SubResource("StandardMaterial3D_gpwsf")
+
+[node name="Line3" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0, -2.238)
+
+[node name="Line8" parent="ROSCoord/Field/Lines" instance=ExtResource("3_a0ofl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0, -6.762)
+material = SubResource("StandardMaterial3D_gpwsf")
+
+[node name="Line9" parent="ROSCoord/Field/Lines" instance=ExtResource("4_pgop1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -1.5)
+
+[node name="Line10" parent="ROSCoord/Field/Lines" instance=ExtResource("4_pgop1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -7.5)
+
+[node name="Line11" parent="ROSCoord/Field/Lines" instance=ExtResource("4_pgop1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -4.5)
+
+[node name="Line12" parent="ROSCoord/Field/Lines" instance=ExtResource("4_pgop1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0, -4.5)
+
+[node name="RopeFences" type="Node3D" parent="ROSCoord/Field"]
+
+[node name="RopeFence" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.75, 0, -4.997)
+
+[node name="RopeFence6" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.25, 0, -4.002)
+
+[node name="RopeFence2" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.25, 0, -3.477)
+
+[node name="RopeFence4" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.75, 0, -3.477)
+
+[node name="RopeFence3" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.25, 0, -5.523)
+
+[node name="RopeFence5" parent="ROSCoord/Field/RopeFences" instance=ExtResource("6_y123h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.75, 0, -5.523)
+
+[node name="CenterFences" type="Node3D" parent="ROSCoord/Field"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ROSCoord/Field/CenterFences"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.025, -3.025)
+use_collision = true
+collision_layer = 4
+size = Vector3(3, 0.05, 0.05)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="ROSCoord/Field/CenterFences"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.025, -5.975)
+use_collision = true
+collision_layer = 4
+size = Vector3(3, 0.05, 0.05)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="ROSCoord/Field/CenterFences"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.975, 0.025, -4.5)
+use_collision = true
+collision_layer = 4
+size = Vector3(3, 0.05, 0.05)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="ROSCoord/Field/CenterFences"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.025, 0.025, -4.5)
+use_collision = true
+collision_layer = 4
+size = Vector3(3, 0.05, 0.05)
+
+[node name="Robot" type="CharacterBody3D" parent="ROSCoord"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+collision_mask = 3
+script = ExtResource("4_qefnv")
+linear_acc = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ROSCoord/Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_7xavb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ROSCoord/Robot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+size = Vector3(0.65, 0.65, 0.5)
+
+[node name="lidar0" parent="ROSCoord/Robot" instance=ExtResource("2_mio1f")]
+delay = 0.0
+frame_id = "lidar0_link"
+laser_collision_mask = 7
+transform = Transform3D(1, 3.49692e-07, -4.37114e-08, 3.49692e-07, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 0, -0.4, 0.055)
+
+[node name="lidar1" parent="ROSCoord/Robot" instance=ExtResource("2_mio1f")]
+delay = 0.0
+topic_name = "scan1"
+frame_id = "lidar1_link"
+laser_collision_mask = 7
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 8.74228e-08, 7.64274e-15, 8.74228e-08, -1, 0, 0.4, 0.055)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ROSCoord/Robot"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -2.98023e-08, 0.515)
+mesh = SubResource("PrismMesh_hmovn")
+skeleton = NodePath("../../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.69601, 1.55092, -0.393788)
+script = ExtResource("2_7oref")

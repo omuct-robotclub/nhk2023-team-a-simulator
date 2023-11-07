@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtr0u82b88q2m"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwtv6"]
+size = Vector2(3, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cih6v"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Line" type="CSGMesh3D"]
+mesh = SubResource("PlaneMesh_dwtv6")
+material = SubResource("StandardMaterial3D_cih6v")
