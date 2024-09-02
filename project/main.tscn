@@ -287,13 +287,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 size = Vector3(0.65, 0.65, 0.5)
 
 [node name="lidar0" parent="ROSCoord/Robot" instance=ExtResource("2_mio1f")]
-delay = 0.0
+delay = 0.2
 frame_id = "lidar0_link"
 laser_collision_mask = 7
-transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, -0.098, -0.38, 0.055)
+transform = Transform3D(1.31134e-07, 1, 0, 1, -1.31134e-07, 8.74228e-08, 8.74228e-08, -1.14641e-14, -1, -0.098, -0.38, 0.055)
 
 [node name="lidar1" parent="ROSCoord/Robot" instance=ExtResource("2_mio1f")]
-delay = 0.0
+delay = 0.2
 topic_name = "scan1"
 frame_id = "lidar1_link"
 laser_collision_mask = 7
